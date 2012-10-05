@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title> :: Sistema Integrado de Cervejaria :: <ui:insert name ="title"/></title>
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/dark-hive/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body> 
+
+        <br/><br/>
+        <div>
+            <div style="float: left; width: 100%; text-align: center;">
+                <br/><br/><br/>
+                <h1 style="text-align: center; font-family: Arial; color: #C77405;">Rede Integrada de Cervejaria</h1>
+            </div>
+            <br/><br/><br/><br/><br/><br/>
+            <div style="float: right; width: 100%">
+                <!-- Mensagens de erro do formulário-->
+                <h:messages id="mensagens_erro" showDetail="true"/>
+                <br/><br/><br/><br/><br/><br/>
+                <div style="width:990px;">
+                    <div style="width:110px; margin:10px auto;">
+                        <h:form>
+                            <p:messages id="mensagens"/>  
+                            <h:panelGrid id="painelCadastro" columns="2" cellspacing="3"> 
+                                <h:outputText value="Nome:"/>
+                                <p:inputText value="#{cadastroUsuarioBean.nome}"
+                                             required="true" requiredMessage="Informe o nome"/>
+                                <h:outputText value="Sobrenome:"/>
+                                <p:inputText value="#{cadastroUsuarioBean.sobreNome}"/>
+                                <h:outputText value="Sexo:"/>
+                                <h:selectOneMenu value="#{cadastroUsuarioBean.sexo}" style="width: 60px;">
+                                    <f:selectItems value="#{cadastroUsuarioBean.tiposSexo}"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Data de nascimento:"/>
+                                <p:calendar navigator="true" locale="pt" pattern="dd/MM/yyyy"
+                                            required="true" requiredMessage="Informe a data de nascimento"
+                                            yearRange="c-70:c+10" value="#{cadastroUsuarioBean.dataNascimento}">
+                                </p:calendar>
+                                <h:outputText value="Login:"/>
+                                <p:inputText value="#{cadastroUsuarioBean.login}"
+                                             required="true" requiredMessage="Informe o login"/>
+                                <h:outputText value="Senha:"/>
+                                <p:password id="senha" value="#{cadastroUsuarioBean.senha}"
+                                            required="true" requiredMessage="Informe a senha"
+                                            feedback="false" match="confirmarSenha" 
+                                            validatorMessage="Confirme a senha" minLength="4"/>
+                                <h:outputText value="Confirmar senha:"/>
+                                <p:password id="confirmarSenha" value="#{cadastroUsuarioBean.senha}"
+                                            feedback="false" required="true" requiredMessage="Confirme a senha" minLength="4"/>
+                                <h:outputText value="E-mail:"/>
+                                <p:inputText value="#{cadastroUsuarioBean.email}"
+                                             required="true" requiredMessage="Informe o endereço de email" />
+                            </h:panelGrid>
+                            <br/>
+                            <p:commandButton value="Cadastrar" 
+                                             actionListener="#{cadastroUsuarioBean.cadastrarUsuario}"
+                                             update="mensagens,painelCadastro"/>
+                        </h:form>   
+                    </div>
+                </div>
+                <br/>
+                <div style="text-align: center;">
+                    <a href="CadastroUsuario.xhtml">Novo Usuário</a>
+                </div>   
+            </div>
+        </div> 
+    </h:body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="title">Inserir Origem</ui:define>
+
+            <ui:define name="content">
+                <h:form id="formOrigem">
+                    <p:panel header="Inserir Origem">
+                        <h:panelGrid>
+                            <p:message for="formOrigem" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Cidade:" for="Cidade" />
+                            <h:inputText id="cidade" value="#{origemMB.origem.cidade}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                <f:validateLength minimum="1" maximum="255"/>
+                            </h:inputText>
+                            <h:outputLabel value="Região:" for="Região" />
+                            <h:inputText id="regiao" value="#{origemMB.origem.regiao}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                <f:validateLength minimum="1" maximum="255"/>
+                            </h:inputText>
+                            <h:outputLabel value="País:" for="Pais" />
+                            <h:inputText id="pais" value="#{origemMB.origem.pais}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                <f:validateLength minimum="1" maximum="255"/>
+                            </h:inputText>
+                            </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="inserir" action="#{origemMB.adicionar}" value="Inserir" />
+                            &nbsp;
+                            <h:commandButton id="cancelar" action="/sistema/principal" value="Cancelar" immediate="true" />
+                        </h:panelGrid>
+                    </p:panel>
+                    
+                    <p:panel header="Listar Origem">
+                        <h:panelGrid>
+                            <h:outputText value="Não existe origem cadastrada" rendered="#{empty origemMB.origens}"/>
+                            
+                            <p:dataTable value="#{origemMB.origens}" var="origem" paginator="true" rows="10" rendered="#{not empty origemMB.origens}">
+                                <p:column sortBy="#{origem.nome}" filterBy="#{origem.nome}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Cidade" />
+                                    </f:facet>
+                                    <h:outputText value="#{origem.cidade}"/>
+                                </p:column>
+                                <p:column sortBy="#{origem.regiao}" filterBy="#{origem.regiao}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Cidade" />
+                                    </f:facet>
+                                    <h:outputText value="#{origem.regia}"/>
+                                </p:column>
+                                <p:column sortBy="#{origem.pais}" filterBy="#{origem.pais}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Cidade" />
+                                    </f:facet>
+                                    <h:outputText value="#{origem.pais}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>  
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
