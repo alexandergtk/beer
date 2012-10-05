@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="title">Inserir Origem</ui:define>
+
+            <ui:define name="content">
+                <h:form id="formOrigem">
+                    <p:panel header="Inserir Receita da Cerveja">
+                        <h:panelGrid>
+                            <p:message for="formOrigem" />
+                        </h:panelGrid>
+                        <div style="float: left; width: 30%;">
+                            <h:panelGrid columns="3">
+                                <!-- Nome do Cervejeiro -->
+                                <h:outputLabel value="Nome:" for="Nome" />
+                                <h:inputText id="nome" value="#{origemMB.origem.regiao}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                    <f:validateLength minimum="1" maximum="255"/>
+                                </h:inputText>
+
+                                <!-- Nome da Cerveja -->
+                                <h:outputLabel value="Região:" for="Região" />
+                                <h:inputText id="regiao" value="#{origemMB.origem.regiao}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                    <f:validateLength minimum="1" maximum="255"/>
+                                </h:inputText>
+
+                                <!-- Origem da Cerveja -->
+                                <h:outputLabel value="Origem:" for="Origem" />
+                                <h:selectOneMenu value="#{buttonBean.number}">  
+                                    <f:selectItem itemLabel="Select One" itemValue="" />  
+                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
+                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
+                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
+                                </h:selectOneMenu>        
+
+                                <!-- Tipo da Cerveja -->
+                                <h:outputLabel value="Tipo:" for="Tipo" />
+                                <h:selectOneMenu value="#{buttonBean.number}">  
+                                    <f:selectItem itemLabel="Select One" itemValue="" />  
+                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
+                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
+                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
+                                </h:selectOneMenu>
+
+
+                                <!-- Cor da Cerveja -->
+                                <h:outputLabel value="Cor:" for="Cor" />
+                                <h:selectOneMenu value="#{buttonBean.number}">  
+                                    <f:selectItem itemLabel="Select One" itemValue="" />  
+                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
+                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
+                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
+                                </h:selectOneMenu>
+
+                                <!-- Teor da Cerveja -->
+                                <h:outputLabel value="Teor:" for="Teor" />
+                                <h:selectOneMenu value="#{buttonBean.number}">  
+                                    <f:selectItem itemLabel="Select One" itemValue="" />  
+                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
+                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
+                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
+                                </h:selectOneMenu>
+
+                                <!-- Fermentação da Cerveja -->
+                                <h:outputLabel value="Fermentação:" for="Fermentação" />
+                                <h:selectOneMenu value="#{buttonBean.number}">  
+                                    <f:selectItem itemLabel="Select One" itemValue="" />  
+                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
+                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
+                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </div>
+                        <div style="width: 100%;">
+                            <h:panelGrid columns="1">
+                                <h:outputLabel value="Descrição:" for="Descricao" />
+                                <p:inputTextarea rows="40" cols="80" completeMethod="#{autoCompleteBean.completeArea}" queryDelay="750" minQueryLength="4" />  
+                            </h:panelGrid>
+                        </div>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="inserir" action="#{origemMB.adicionar}" value="Inserir" />
+                            &nbsp;
+                            <h:commandButton id="cancelar" action="/sistema/principal" value="Cancelar" immediate="true" />
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

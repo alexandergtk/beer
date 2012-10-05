@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title> :: Sistema Integrado de Cervejaria :: <ui:insert name ="title"/></title>
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/dark-hive/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/default.css" rel="stylesheet" type="text/css" />
+        <ui:insert name="script"></ui:insert>
+    </h:head>
+
+    <h:body> 
+
+        <div id="tudo">
+            <div id="top">
+                <br />
+                <h:form id="formTemplate">
+                    <p:menubar id="barraDeMenu">
+                        <p:submenu id="subMenuCliente" label="Cadastro">
+                            <p:menuitem>
+                                <h:commandLink action="/pages/InserirTipo" value="Tipo"/>
+                            </p:menuitem>
+                            <p:menuitem>
+                                <h:commandLink action="/pages/InserirOrigem" value="Origem"/>
+                            </p:menuitem>      
+                            <p:menuitem>
+                                <h:commandLink action="/pages/InserirEstilo" value="Estilo"/>
+                            </p:menuitem>
+                            <p:menuitem>
+                                <h:commandLink action="/pages/InserirCor" value="Cor"/>
+                            </p:menuitem>
+                        </p:submenu>
+                        <p:submenu id="subMenuReceita" label="Receita">
+                            <p:menuitem>
+                                <h:commandLink action="/pages/InserirReceita" value="Receita"/>
+                            </p:menuitem>
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </div>
+            <div id="content" class="left">
+                <ui:insert name="content"></ui:insert>
+            </div>
+            <div id="bottom" class="center_content"> 
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

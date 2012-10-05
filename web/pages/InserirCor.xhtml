@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="title">Inserir Cor</ui:define>
+
+            <ui:define name="content">
+                <h:form id="formCor">
+                    <p:panel header="Inserir Cor">
+                        <h:panelGrid>
+                            <p:message for="formCor" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Cor:" for="Descricao" />
+                            <h:inputText id="descricao" value="#{corMB.cor.descricao}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                <f:validateLength minimum="1" maximum="255"/>
+                            </h:inputText>
+                            </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="inserir" action="#{corMB.adicionar}" value="Inserir" />
+                            &nbsp;
+                            <h:commandButton id="cancelar" action="/sistema/principal" value="Cancelar" immediate="true" />
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
